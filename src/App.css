@@ -15,6 +15,7 @@
 
 .App-header {
   background-color: #282c34;
+  
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +36,45 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.scrolling-parent {
+  height:18.5rem;
+  overflow: hidden;
+}
+
+.scrolling-box {
+    height:100%;
+    
+    -moz-transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+
+    -moz-animation: scrolling-animation 32s linear infinite;
+    -webkit-animation: scrolling-animation 32s linear infinite;
+    animation: scrolling-animation 15s linear infinite;
+}
+
+@-moz-keyframes scrolling-animation {
+  from { -moz-transform: translateY(100%);}
+  to { -moz-transform: translateY(-100%);}
+}
+
+@-webkit-keyframes scrolling-animation {
+  from { -webkit-transform: translateY(100%);}
+  to { -webkit-transform: translateY(-100%);}
+}
+
+@keyframes scrolling-animation {
+  from {
+    -moz-transform: translateY(100%);
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+  }
+  to {
+    -moz-transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+  
 }

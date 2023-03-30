@@ -1,0 +1,67 @@
+
+.town {
+    border: 4px solid rgb(110, 4, 129);
+    margin: 25px;
+    padding: 15px;
+}
+
+.town-delete::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .title-text {
+    font-size: 72px;
+    color: rgb(13, 163, 58);
+    cursor: pointer;
+    vertical-align: middle;
+    text-shadow: 2px 2px rgb(125, 3, 165);
+    margin-right: 30px;
+
+}
+
+
+body {
+    background-color: rgb(78, 76, 76);
+    
+
+}
+
+.addTown-form {
+    margin-top: 100px;
+}
+
+.town-form-body {
+    background-color: rgb(78, 76, 76);
+    border-radius: 20px;
+}
+
+.addTown-pic{
+    min-height: 549px;
+}
+
+.addTown-main {
+    height: 550px;
+    max-width: 1920px;
+    min-width: 1280px;
+}
+
+.addTown-form {
+    margin-top: 100px;
+}
+
+.addTown-form-body {
+    background-color: rgb(78, 76, 76);
+    border-radius: 20px;
+}
+
+.addTown-pic {
+    min-height: 549px;
+}
+
+.addTown-main {
+    height: 550px;
+    max-width: 1920px;
+    min-width: 1280px;
+}

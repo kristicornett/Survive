@@ -1,0 +1,20 @@
+.title-text {
+    font-size: 72px;
+    color: rgb(13, 163, 58);
+    cursor: pointer;
+    vertical-align: middle;
+    text-shadow: 2px 2px rgb(118, 115, 115);
+    margin-right: 30px;
+}
+
+.park-detail-modal{
+    position: absolute;
+        top: 10vw;
+        left: 10vw;
+        right: 10vw;
+        bottom: 10vw;
+        background-color: rgb(42, 41, 39);
+        color: azure;
+        padding: 15px;
+
+}

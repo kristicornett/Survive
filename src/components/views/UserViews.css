@@ -1,0 +1,56 @@
+.home-bar {
+    height: 410px;
+    
+    
+}
+
+.home-bar.zombie {
+    background: url('/public/images/zombie_bar.png');
+}
+
+.home-bar.towns {
+    background: url('/public/images/towns_bar.png');
+}
+
+.home-bar.trades {
+    background: url('/public/images/trades_bar.png');
+}
+
+.home-bar.parks {
+    background: url('/public/images/parks_bar.png');
+}
+
+.home-main {
+    height: 500px;
+    background: url('/public/images/main_bar.png');
+}
+
+.home-bar.text-right {
+    text-align: right;
+}
+
+.scroll-container {
+    height: 22rem;
+}
+
+.bar-text {
+    font-size: 72px;
+    color: white;
+    cursor: pointer;
+    vertical-align: middle;
+    text-shadow: 2px 2px black;
+    margin-right: 30px;
+
+}
+
+.bar-text:hover {
+    color: purple;
+}
+
+.scrolling-header:hover {
+    color: purple;
+}
+
+.zombie_sightingBox {
+    color: rbga(255,255,255,.3)
+}

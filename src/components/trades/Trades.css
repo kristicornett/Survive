@@ -1,0 +1,9 @@
+.title-text {
+    font-size: 72px;
+    color: rgb(13, 163, 58);
+    cursor: pointer;
+    vertical-align: middle;
+    text-shadow: 2px 2px rgb(125, 3, 165);
+    margin-right: 30px;
+
+}

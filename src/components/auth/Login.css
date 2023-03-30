@@ -1,0 +1,24 @@
+body {
+    background-color: rgb(78, 76, 76);
+    
+
+}
+
+.login-form {
+    margin-top: 100px;
+}
+
+.login-form-body {
+    background-color: rgb(78, 76, 76);
+    border-radius: 20px;
+}
+
+.login-zombie {
+    min-height: 549px;
+}
+
+.login-main {
+    height: 550px;
+    max-width: 1920px;
+    min-width: 1280px;
+}

@@ -27,50 +27,99 @@ export const Login = () => {
         })
     }
 
-    return (
-        <main className='container--login'>
-            <div className='w-full'> 
-            <h1 className='text-6xl p-14 decoration-8 text-center text-green-600 text-shadow shadow-indigo-500 font-bold'>Survive.net</h1>
-             </div>
-            <div className='w-full h-screen flex login-main'>
-                <div className='w-1/2 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-green-200 via-green-400 to-purple-700'>
-                    <div className='login-form flex flex-row justify-center items-center'>
-                        <div className='login-form-body p-10 inline-block'>
-                        <form className='' onSubmit={handleLogin}>
-                            
-                            <div className='text-green-600'>
-                            <h2 className='text-2xl font-bold  p-2 px-4 py-3 text-center mb-7'>Sign In</h2>
-                            
-                            <fieldset className='pb-4'>
-                                <label className='font-semibold pb-6 px-4 mb-4 rounded-lg w-full focus:border-indigo-600 focus:bg-white focus:outline-indigo-500 flex-col ml-4' htmlFor='inputEmail'>Email address</label>
-                                <input type='email'
+    return <>
+    <div className="login-form w-full flex flex-col">
+      <div className="w-full text-center flex justify-center">
+        <div className="w-4/5 flex">
+          <div className="login-add-left w-1/2 bg-white">
+          <h1 className='form-header text-6xl p-14 decoration-8 text-center font-bold'>Survive</h1>
+            <form
+              className="grid w-full"
+              onSubmit={handleLogin}
+            >
+            <div className="w-full flex justify-center">
+
+            <div className="w-1/2 text-left inline">
+              <div className="form-cell align-center">
+                <label className="form-label block inline">Sign-in</label>
+                <input type='email'
                                 value={email}
-                                onChange={event => setEmail(event.target.value)}
-                                className='form-control'
-                                placeholder='Email address'
+                               onChange={event => setEmail(event.target.value)}
+                                className='form-input text text-green-600'
+                               placeholder='Email address'
                                 required autoFocus />
-                            </fieldset>
-                            </div>
-                            
-                            <fieldset>
-                                <div className=' p-4 pb-6'>
-                                <button className='rounded-full bg-slate-200 w-36 pt-1, pb-1 m-3 px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-green-600 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2' type='submit'>
-                                    Sign in
-                                </button>
-                                <Link className='rounded-full bg-slate-200 w-36 pt-1, m-3 px-4 py-1.5 text-sm text-purple-600 font-semibold rounded-full border border-green-600 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2' to='/register'>Join Survive.net</Link>
-                                </div>
-                            </fieldset>
-                        </form>
-                        </div>
-
-                    </div>
-
-                </div>
-                <div className='w-1/2'>
-                <img className='login-zombie' src='https://th-thumbnailer.cdn-si-edu.com/snh4FaR_sMYm--hsrr25bYyuxJ8=/1072x720/filters:no_upscale()/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/78/b8/78b8f64e-f6fa-4428-bdec-bac86dc144b3/zombie.jpg'/>
-                </div>
+              </div>
+              
+            </div>    
+            
+             
+           
             </div>
-        </main>
+           
+            <div className=' p-4 pb-6'>
+                                <button className='form-button small w-36 pt-1, pb-1 m-3 px-4 py-1 text-sm  border border-green-600 hover:text-white ' type='submit'>
+                                Sign in
+                               </button>
+                               <Link className='form-button small w-36 pt-1, m-3 px-4 py-1.5 text-sm  border border-green-600 hover:text-white ' to='/register'>Join Survive.net</Link>
+                               </div>
+            </form>
+          </div>
+          <div className="login-add-right w-1/2">
+          <img
+          className="login-add-pic"
+          src='https://th-thumbnailer.cdn-si-edu.com/snh4FaR_sMYm--hsrr25bYyuxJ8=/1072x720/filters:no_upscale()/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/78/b8/78b8f64e-f6fa-4428-bdec-bac86dc144b3/zombie.jpg'
+           />
+      
+          </div>
+        </div>
+      </div>
+    </div>
+  </>
+
+    // return (
+    //     <main className='container--login'>
+    //         <div className='w-full'> 
+    //         <h1 className='text-6xl p-14 decoration-8 text-center text-green-600 text-shadow shadow-indigo-500 font-bold'>Survive.net</h1>
+    //          </div>
+    //         <div className='w-full h-screen flex login-main'>
+    //             <div className='w-1/2 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-green-200 via-green-400 to-purple-700'>
+    //                 <div className='login-form flex flex-row justify-center items-center'>
+    //                     <div className='login-form-body p-10 inline-block'>
+    //                     <form className='' onSubmit={handleLogin}>
+                            
+    //                         <div className='text-green-600'>
+    //                         <h2 className='text-2xl font-bold  p-2 px-4 py-3 text-center mb-7'>Sign In</h2>
+                            
+    //                         <fieldset className='pb-4'>
+    //                             <label className='font-semibold pb-6 px-4 mb-4 rounded-lg w-full focus:border-indigo-600 focus:bg-white focus:outline-indigo-500 flex-col ml-4' htmlFor='inputEmail'>Email address</label>
+    //                             <input type='email'
+    //                             value={email}
+    //                             onChange={event => setEmail(event.target.value)}
+    //                             className='form-control'
+    //                             placeholder='Email address'
+    //                             required autoFocus />
+    //                         </fieldset>
+    //                         </div>
+                            
+    //                         <fieldset>
+    //                             <div className=' p-4 pb-6'>
+    //                             <button className='rounded-full bg-slate-200 w-36 pt-1, pb-1 m-3 px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-green-600 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2' type='submit'>
+    //                                 Sign in
+    //                             </button>
+    //                             <Link className='rounded-full bg-slate-200 w-36 pt-1, m-3 px-4 py-1.5 text-sm text-purple-600 font-semibold rounded-full border border-green-600 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2' to='/register'>Join Survive.net</Link>
+    //                             </div>
+    //                         </fieldset>
+    //                     </form>
+    //                     </div>
+
+    //                 </div>
+
+    //             </div>
+    //             <div className='w-1/2'>
+    //             <img className='login-zombie' src='https://th-thumbnailer.cdn-si-edu.com/snh4FaR_sMYm--hsrr25bYyuxJ8=/1072x720/filters:no_upscale()/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/78/b8/78b8f64e-f6fa-4428-bdec-bac86dc144b3/zombie.jpg'/>
+    //             </div>
+    //         </div>
+    //     </main>
         
-    )
+    // )
 }

@@ -3,15 +3,25 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: left;
+    min-width: 800px;
     background: linear-gradient(180deg, indigo 30%, purple 70%, indigo 100%);
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px black;
+    width: 100%
 }
 
 .navbar__item {
-    flex-basis: 20%;
     list-style-type: none;
+    padding: 5px 20px;
 }
 
 .navbar__logout {
-    margin-left: auto;
+   padding: 5px 20px;
+   text-align: center;
 }
 
+.navbar__home {
+    padding: 5px 20px;
+    text-align: center;
+}

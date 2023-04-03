@@ -24,6 +24,8 @@ export const getTradeOffers = () => {
             .then(response => response.json())
 }
 
+
+
 export const getZombieSightings = () => {
     return fetch('http://localhost:8088/zombieSightings?_expand=town&_expand=zombieSightingType&_expand=zombieSightingDistance&_expand=zombieSightingStatus')
             .then(response => response.json())
@@ -45,7 +47,7 @@ export const getUser = (userId) => {
 }
 
 export const getTrade = (tradeId) => {
-    return fetch(`http://localhost:8088/trades/${tradeId}`)
+    return fetch(`http://localhost:8088/trades/${tradeId}?_expand=town`)
             .then(response => response.json())
 }
 

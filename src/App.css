@@ -7,6 +7,31 @@
   pointer-events: none;
 }
 
+.app-base {
+  width: 100%;
+  max-width: 1512px;
+  min-width: 840px;
+}
+
+.app-base.outer {
+ 
+  height: 100%;
+  justify-content: center;
+  align-content: center;
+  background-color: #282c34;
+  display: flex;
+}
+
+.app-base.inner{
+  
+  
+}
+
+.app-base.body {
+ 
+  
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -78,3 +103,4 @@
   }
   
 }
+

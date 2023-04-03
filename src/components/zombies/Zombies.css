@@ -6,3 +6,57 @@
     text-shadow: 2px 2px rgb(125, 3, 165);
     margin-right: 30px;
 }
+
+.zombie-text {
+    font-size: 72px;
+    color: rgb(118, 7, 146);
+    vertical-align: middle;
+    text-shadow: 2px 2px black;
+    margin-right: 30px;
+
+}
+
+
+.zombie-form {
+    margin-top: 3rem;
+    max-height:600px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.zombie-form-body {
+    background-color: rgb(78, 76, 76);
+    border-radius: 20px;
+    margin-top: 3rem;
+}
+
+
+
+
+.zombie-add-pic{
+    min-height: 549px;
+    width: 100%;
+
+}
+
+
+.zombie-text {
+    font-size: 72px;
+    color: rgb(118, 7, 146);
+    vertical-align: middle;
+    text-shadow: 2px 2px rgb(176, 173, 173);
+    margin-right: 30px;
+
+}
+
+.zombie-header {
+    width: 100%;
+    background-color: green;
+    padding: 8px;
+    min-height: 22px;
+    text-align: center
+}
+
+.trade-add-left {
+    min-width: 600px;
+}

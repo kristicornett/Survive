@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(78, 76, 76);
+    background-color: #282c34
     
 
 }
@@ -21,4 +21,37 @@ body {
     height: 550px;
     max-width: 1920px;
     min-width: 1280px;
+}
+
+.login-add-pic{
+    min-height: 549px;
+    width: 100%;
+    min-width:600px;
+}
+
+
+.login-text {
+    font-size: 72px;
+    color: rgb(118, 7, 146);
+    vertical-align: middle;
+    text-shadow: 2px 2px rgb(176, 173, 173);
+    margin-right: 30px;
+
+}
+
+.login-header {
+    width: 100%;
+    background-color: green;
+    padding: 8px;
+    min-height: 22px;
+    text-align: center
+}
+
+.login-add-left {
+    min-width: 400px;
+   
+}
+
+.login-add-right {
+    width: 100%;
 }

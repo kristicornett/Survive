@@ -8,8 +8,14 @@ function App() {
   return (
     <Authorized>
       <>
+        <div className="app-base outer">
+          <div className="app-base inner">
         <NavBar></NavBar>
+        <div className='app-base body'>
         <Outlet />
+        </div>
+        </div>
+        </div>
       </>
     </Authorized>
   );

@@ -1,64 +1,9 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { createNewTown, getTowns } from "../../repos/ApiManager";
-import "./Town.css";
-
-export const AddTown = (props) => {
-  const [town, setTown] = useState({
-    name: "",
-    description: "",
-    population: 0,
-    vacancy: false,
-    latitude: 0,
-    longitude: 0,
-  });
-
-  let navigate = useNavigate();
-
-  useEffect(() => {
-  }, []);
-
-  const townSubmit = (event) => {
-    event.preventDefault();
-
-    const newTownToSendToAPI = {
-      name: town.name,
-      description: town.description,
-      population: town.population,
-      vacancy: town.vacancy,
-      latitude: town.latitude,
-      longitude: town.longitude,
-      image: town.image,
-      mapKey: town.mapKey,
-    };
-    return createNewTown(newTownToSendToAPI).then(() => {
-      navigate("/towns");
-    });
-  };
-
-  const updateTown = (event) => {
-    const copy = { ...town };
-    if (isNaN(parseInt(event.target.value))) {
-      copy[event.target.id] = event.target.value;
-    } else {
-      copy[event.target.id] = parseInt(event.target.value);
-    }
-    setTown(copy);
-  };
-
-  const setVacancy = (event) => {
-    const copy = { ...town };
-    copy.vacancy = event.target.value == "true";
-    setTown(copy);
-  };
-
-  return (
     <>
-      <div className="town-form w-full">
+      <div className="town-form w-full flex flex-col">
         <div className="w-full text-center flex justify-center">
           <div className="w-4/5 flex">
             <div className="town-add-left w-1/2 bg-white ">
-              <div className="w-full form-header mt-8 mb-6">Add a Town</div>
+              <div className="w-full form-header">Add a Town</div>
               <form
                 className="grid w-full"
                 onSubmit={updateTown}
@@ -71,12 +16,10 @@ export const AddTown = (props) => {
                   <input id='name' type="text" className="form-input text block"o nChange={updateTown}></input>
                 </div>
                 <div className="form-cell">
-                  <label className="form-label block">Map Key</label>
-                  <input id='mapKey' type="text" className="form-input text block" onChange={updateTown}></input>
+                        Form here
                 </div>
                 <div className="form-cell">
-                  <label className="form-label block">Latitude</label>
-                  <input id='latitude' type="text" className="form-input text block" onChange={updateTown}></input>
+                  label and input here
                 </div>
                 <div className="form-cell">
                   <label className="form-label block">Vacancy</label>
@@ -104,16 +47,13 @@ export const AddTown = (props) => {
               </div>     
               <div className="w-1/2 text-left">
                 <div className="form-cell">
-                  <label className="form-label block">Population</label>
-                  <input id='population' type="text" className="form-input text block" onChange={updateTown}></input>
+                  label and input here
                 </div>                
                 <div className="form-cell">
-                  <label className="form-label block">Image URL</label>
-                  <input id='image' type="text" className="form-input text block" onChange={updateTown}></input>
+                    label and input here
                 </div>
                 <div className="form-cell">
-                  <label className="form-label block">Longitude</label>
-                  <input id='longitude' type="text" className="form-input text block" onChange={updateTown}></input>
+                  label and input here
                 </div>
               </div>
               </div>
@@ -125,7 +65,7 @@ export const AddTown = (props) => {
               </div>
               </div>
               <div className="w-full text-right pr-16">
-                <button className="button form-button small" type="submit"
+                <button className="button form-button" type="submit"
                     onClick={(event) => townSubmit(event)}>Submit</button>
               </div>
               </form>
@@ -140,6 +80,3 @@ export const AddTown = (props) => {
         </div>
       </div>
     </>
-  );
-  
-};

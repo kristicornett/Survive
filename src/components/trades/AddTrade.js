@@ -15,22 +15,12 @@ export const AddTrade = (props) => {
  
   const [user, setUser] = useState({})
   const [supplyTypes, setSupplyTypes] = useState([])
-  const [supplies, setSupplies] = useState([])
-  const [addTrades, setAllTrades] = useState([])
   const localSurviveUser = localStorage.getItem("survive_user")
   const surviveUserObject = JSON.parse(localSurviveUser)
 
   let navigate = useNavigate()
 
   useEffect(() => {
-    getTradeOffers().then((tradeArray) => {
-      setAllTrades(tradeArray)
-    })
-
-    getSupplies().then((supplyArray) => {
-        setSupplies(supplyArray)
-    })
-
     getSupplyTypes().then((supplyTypeArray) => {
         setSupplyTypes(supplyTypeArray)
     })
@@ -85,94 +75,95 @@ export const AddTrade = (props) => {
   }
 
   return (
-    <main style={{ textAlign: 'center' }}>
-      <div>
-        <h1 className='text-4xl p-8 decoration-8 text-center text-green-600 text-shadow shadow-indigo-500 font-bold'>Add A Trade</h1>
-     </div>
-     <div className='grid h-screen place-items-center'>
-     <div className='grid place-items-center w-1/2 px-10 py-14 -mt-40 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-green-200 via-green-400 to-purple-700'>
-      <form className='bg-zinc-600 w-9/12 h-96 m-24  text-slate-100' onSubmit={updateTrade}>
+    <>
+    <div className="trade-form w-full">
+        <div className="w-full text-center flex justify-center ">
+          <div className="w-4/5 flex">
+            <div className="trade-add-left w-1/2 bg-white">
+              <div className="w-full form-header mt-6 mb-12">Add Trade Offer</div>
+              <form
+                className="grid w-full"
+                onSubmit={tradeSubmit}
+              >
+              <div className="w-full flex pl-16">
+
+              <div className="w-1/2 text-left">
+                <div className="form-cell">
+                  <label className="form-label block">{"Item(s) Offered"}</label>
+                  <input id='description' type="text" className="form-input text block" onChange={updateTrade}></input>
+                </div>
+                <div className="form-cell">
+                <label className="form-label block">{"Offered Category"}</label>
+                <select className="form-select" id='supplyTypeOfferId' required onChange={updateTrade}>
+                    <option>Please select</option>
+                    {supplyTypes.map((supplyType) => {
+                      return (
+                        <option key={supplyType.id} value={supplyType.id}>
+                          {supplyType.type}
+                        </option>
+                      )
+                    })}
+                </select>
+                </div>
+                <div className="form-cell">
+                  <label className="form-label block">Willing to Haggle?</label>
+                  <input
+                        id="haggle"
+                        className="ml-3"
+                        type="radio"
+                        name="haggleRadio"
+                        onChange={setHaggle}
+                        value={true}
+                        checked={trade.haggle == true}
+                      ></input>
+                      <label className="form-label ml-1" htmlFor="haggle">Yes</label>
+                      <input
+                        id="nohaggle"
+                        className="ml-3"
+                        type="radio"
+                        name="haggleRadio"
+                        onChange={setHaggle}
+                        value={false}
+                        checked={trade.haggle == false}
+                      ></input>
+                      <label className="form-label ml-1"  htmlFor="nohaggle">No</label>
+                </div>
+              </div>     
+              <div className="w-1/2 text-left">
+                <div className="form-cell">
+                <label className="form-label block">{"Item(s) Wanted"}</label>
+                  <input id='wanted' type="text" className="form-input text block" onChange={updateTrade}></input>
+                </div>                
+                <div className="form-cell">
+                <label className="form-label block">{"Wanted Category"}</label>
+                  <select className="form-select" id='supplyTypeOfferWantedId' required onChange={updateTrade}>
+                    <option>Please select</option>
+                    {supplyTypes.map((supplyType) => {
+                      return (
+                        <option key={supplyType.id} value={supplyType.id}>
+                          {supplyType.type}
+                        </option>
+                      )
+                    })}
+                  </select>
+                </div>
+              </div>
+              </div>
+              <div className="w-full text-right pr-16">
+                <button className="button form-button small" type="submit"
+                    onClick={(event) => tradeSubmit(event)}>Submit</button>
+              </div>
+              </form>
+            </div>
+            <div className="trade-add-right w-1/2">
+            <img
+            className="trade-add-pic"
+            src={process.env.PUBLIC_URL + "/images/trade_add.png"} />
         
-        <fieldset className='pb-7 pt-5'>
-            <div className='form-group'>
-            <input className='text-black ring-offset-green-700'
-            onChange={updateTrade}
-            name='Desciption'
-            type='text'
-            id='description'
-            placeholder='Description of Trade'
-            required />
-              <input
-            onChange={updateTrade}
-            name='Desciption'
-            type='text'
-            id='wanted'
-            className='tradeDescription ml-5 text-black'
-            placeholder='Looking For'
-            required />
-           </div>
-           </fieldset> 
-        
-
-           <fieldset className='text-black'>
-          <div className="form-group ">
-            <select id='supplyTypeOfferId' required onChange={updateTrade}>
-              <option>Choose Supply Type Trade</option>
-
-              {supplyTypes.map((supplyType) => {
-                return (
-                  <option key={supplyType.id} value={supplyType.id}>
-                    {supplyType.type}
-                  </option>
-                )
-              })}
-            </select>
-              
-            <select className="form-group m-4" id='supplyTypeOfferWantedId' required onChange={updateTrade}>
-              <option>Choose Supply Type Receive</option>
-
-              {supplyTypes.map((supplyType) => {
-                return (
-                  <option key={supplyType.id} value={supplyType.id}>
-                    {supplyType.type}
-                  </option>
-                )
-              })}
-            </select>
+            </div>
           </div>
-        </fieldset>
-           
-           <fieldset className='p-2 m-2'>
-           <label>Willing to haggle?
-            <input className='m-3' type='radio' name='haggle' onChange={setHaggle} value={true} checked={
-                (
-                    trade.haggle == true
-                )
-            }></input>
-           </label>
-           <label>No Haggling
-            <input className='m-3' type='radio' name='townVacancy' onChange={setHaggle} value={false} checked={
-                (
-                    trade.haggle == false
-                )
-            }></input>
-           </label>
-           </fieldset>
-        <fieldset>
-            {
-                test()
-            }
-          <button className="float-center rounded-full bg-slate-200 
-        w-36 pt-1, pb-1 px-4 py-1 mt-5 text-sm text-purple-600 font-semibold rounded-full 
-        border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent 
-        focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2" type="submit" onClick={(event) => tradeSubmit(event)}>
-            {" "}
-            Submit New Trade Offer{" "}
-          </button>
-        </fieldset>
-      </form>
+        </div>
       </div>
-      </div>
-    </main>
+    </>
   )
 }

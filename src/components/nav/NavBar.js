@@ -7,15 +7,12 @@ export const NavBar = () => {
     const navigate = useNavigate()
 
     return (
-        <div className='navbar w-full'>
-        <ul className='flex w-full shadow-xl font-mono font-bold 
-        space-x-20 p-6 lg:px-8 ml-16 place-content-evenly content-evenly
-        type="button" inline-flex rounded-md p-2 text-gray-300
-        focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-         ">' aria-controls="mobile-menu" aria-expanded="false">
-             <li className='navbar__item active hover:text-green-600'>
-                <Link className='navbar__link' to='/'>Home Page</Link>
-            </li>
+        <div className='navbar w-full flex'>
+        <div className='navbar__home flex-none active hover:text-green-600'><Link className='navbar__link' to='/'>Home Page</Link></div>
+        <div className='flex-1'>
+        <ul className='flex justify-evenly w-full
+    
+         ' aria-controls="mobile-menu" aria-expanded="false">
             <li className='navbar__item active hover:text-green-600'>
                 <Link className='navbar__link' to='/zombies'>Zombie Sightings</Link>
             </li>
@@ -28,18 +25,21 @@ export const NavBar = () => {
             <li className='navbar__item active hover:text-green-600'>
                 <Link className='navbar__link' to='/parks'>Parks</Link>
             </li>
-
+            </ul>
+            </div>
+            <div className='navbar__logout w-32 active hover:text-green-600'>
             {
                 localStorage.getItem('survive_user')
-                ? <li className='navbar__item navbar__logout hover:text-green-600'>
+
+                ? 
                     <Link className='navbar__link' to='' onClick={() => {
                         localStorage.removeItem('survive_user')
                         navigate('/', {replace: true})
                     }}>Logout</Link>
-                </li>
+                
                 : ''
             }
-        </ul>
+        </div>
         </div>
     )
 }

@@ -1,10 +1,16 @@
-# Getting Started with Create React App
+# Survive
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is my final Frontend Capstone. The purpose of this application to help users survive the end of the world zombie apocalpyse. 
 
-## Available Scripts
+### Description
 
-In the project directory, you can run:
+Users can report zombie sightings, find directions to safe towns, trade goods with other user, use the National Parks services to train, and see a scrolling list of the most recent zombies near them.
+
+# Getting Started
+
+### Dependencies
+
+* This app uses react, tailwindcss, Google Maps, and the National Parks Services
 
 ### `npm start`
 

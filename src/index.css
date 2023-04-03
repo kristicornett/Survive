@@ -9,6 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #282c34;
   
 }
 
@@ -16,3 +17,91 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.card {
+  border: 4px solid rgb(110, 4, 129);
+    margin: 25px;
+    min-height: 100px;
+    background-color: white;
+    
+}
+
+.card-header{
+  width: 100%;
+  background-color: green;
+  padding: 3px;
+  min-height: 22px
+}
+
+.card-body{
+  padding: 10px;
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+
+}
+
+.card-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.card-icon.wide{
+  width: 96px;
+}
+
+
+.form-input {
+  border: 2px solid purple;
+  border-radius: 2px;
+}
+
+.form-input.text {
+  width: 210px;
+
+}
+
+.form-input.textarea{
+  
+}
+
+.form-cell {
+
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.form-header{
+  font-size: 48px;
+  font-weight: bold;
+
+  color: green;
+}
+
+.form-label{
+  font-weight: bold;
+}
+
+.form-button{
+  background-color: green;
+  padding: 10px 25px;
+  color: white;
+  border-radius: 5px;
+  font-size: 30px;
+  text-shadow: 1px 1px black;
+  font-weight: bold;
+}
+
+.form-button.small{
+  padding: 5px 10px;
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.form-select{
+  border: 2px solid purple;
+  border-radius: 2px;
+  width: 210px;
+}
+
+

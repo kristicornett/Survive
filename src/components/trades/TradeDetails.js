@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { getSupplies, getSupplyTypes, getTrade, getTradeOffers, getUsers, updateTradeOffers, deleteTrade } from '../../repos/ApiManager'
+import "./TradeDetails.css"
 
 export const TradeDetails = () => {
     const {tradeId} = useParams()
@@ -98,18 +99,56 @@ const clickDeleteTrade = (event, tradeId) => {
     .then(() => navigate('/trades'))
 }
    
-   
-
-    return <section className='tradeDetails'>
-        <div className='border-2 border-purple-800 p-10 m-4 w-1/3 bg-slate-100 opacity-80 drop-shadow-sm rounded-md font-bold'>
-        <div>Offering User: <div className='font-normal'>{tradeDetail?.enteredUser?.name}</div></div>
-        <div>Supply Offered: <div className='font-normal'>{tradeDetail?.description} </div>Category: <div className='font-normal'>{tradeDetail?.supplyTypeOffered?.type}</div></div>
-        <div>Supply Wanted: <div className='font-normal'>{tradeDetail?.wanted}</div> Category: <div className='font-normal'>{tradeDetail?.supplyTypeWanted?.type}</div></div>
-        {buttonDisplay(tradeDetail)}<button className=' button float-right rounded-full bg-slate-200 w-28 pt-1, pb-1  
-                            x-4 py-1 text-sm text-purple-600 font-semibold rounded-none w-3
-                             justify-end text-justify border border-purple-200 hover:text-white hover:bg-purple-600 
-                             hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 pr-3 pl-1 mb-8
-                             focus:ring-offset-2' id='delete_trade' onClick={(event) => clickDeleteTrade(event, tradeDetail.id)}>Accept</button>
+   return <>
+    <div className='w-full flex justify-center mt-32'>
+        <section className="card mt-8 w-2/5">
+            <div className='card-header flex'>
+                <div className="flex-none w-12">
+                    <img className="card-icon" src={process.env.PUBLIC_URL + "/images/trade_icon.png"}></img>
+            </div>
+            <div className="flex-1"></div>
+            <div className="flex-none w-12 text-center"><button type="button" className='form-button small' onClick={(event) => clickDeleteTrade(event, tradeDetail.id) }>X</button></div>
+            </div>
+            <div className='card-body flex justify-evenly'>
+                <div className="flex-1 flex flex-col">
+                    <div className="trade-cell">
+                        <label>Supply Offered</label>
+                        <span class="trade-data">{tradeDetail.description}</span>
+                    </div>
+                    <div className="trade-cell">
+                    <label>Category</label>
+                        <span class="trade-data">{tradeDetail?.supplyTypeOffered?.type}</span>  
+                    </div>
+                    <div className="trade-cell">
+                    <label>Located At</label>
+                        <span class="trade-data">{tradeDetail?.town?.name}</span>  
+                    </div>
+                    <div className="trade-cell">
+                    <label>Offered By</label>
+                        <span class="trade-data">{tradeDetail?.enteredUser?.name}</span>  
+                    </div>
+                </div>
+                <div className='flex-1 flex flex-col '>
+                <div className="trade-cell">
+                        <label>Supply Wanted</label>
+                        <span class="trade-data">{tradeDetail.wanted}</span>
+                    </div>
+                    <div className="trade-cell">
+                    <label>Category</label>
+                        <span class="trade-data">{tradeDetail?.supplyTypeWanted?.type}</span>  
+                    </div>
+                    <div className="trade-cell">
+                    <label>Accepted By</label>
+                        <span class="trade-data">{tradeDetail?.acceptedUser?.name ? tradeDetail?.acceptedUser?.name : '--'}</span>  
+                    </div>
+                    <div className="trade-cell"> 
+                    {!tradeDetail.acceptedUser &&
+                        <button className="form-button small" onClick={(event) => clickAcceptButton(event, trade)}>Accept Trade</button>
+                    }
+                    </div>
+                </div>
+            </div>
+        </section>
         </div>
-    </section>
+   </>
 }

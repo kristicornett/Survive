@@ -1,5 +1,7 @@
 .home-bar {
     height: 410px;
+    min-width: 1512px;
+    max-width: 800px;
     
     
 }
@@ -23,10 +25,24 @@
 .home-main {
     height: 500px;
     background: url('/public/images/main_bar.png');
+    min-width: 1512px;
+    max-width: 800px;
+}
+
+.home-full{
+    background-color: white;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .home-bar.text-right {
     text-align: right;
+}
+
+.home-col {
+    width: 1512px;
 }
 
 .scroll-container {

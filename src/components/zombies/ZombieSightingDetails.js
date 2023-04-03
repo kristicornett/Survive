@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { getSingleZombieSighting, deleteZombieSighting } from '../../repos/ApiManager'
+import { getSingleZombieSighting, deleteZombieSighting, getZombieSightings} from '../../repos/ApiManager'
 
 export const ZombieSightingDetails = () => {
     const {zombieId} = useParams()
+   
     const [zombieDetail, setZombieDetail] = useState(
         {
             town: '',
@@ -28,24 +29,137 @@ export const ZombieSightingDetails = () => {
         [zombieId]
     )
 
-const deleteSighting = (event, sightingId) => {
+    
+
+const deleteSighting = (event) => {
     event.preventDefault()
 
     deleteZombieSighting(zombieId)
     .then(() => navigate('/zombies'))
 }
 
+const renderSightingIcons = () => {
+    if(zombieDetail.zombieSightingTypeId == 1){
+    return (
+        <img className="card-icon" src={process.env.PUBLIC_URL + "/images/zombie_icon.png"}></img>
+    )
+    }                            
+    else{
+        return (
+            <img className="card-icon wide" src={process.env.PUBLIC_URL + "/images/zombie_cluster_icon.png"}></img>
+        )
+    }
+                                    
+}
+
 
    
 
-    return <section className='zombieDetail'>
-        <div className='border-2 border-purple-800 p-4 m-4 w-1/3 bg-slate-100 opacity-80 drop-shadow-sm rounded-md font-bold'>
-        <div >Posted by: <div className='font-normal'>{zombieDetail.name}</div></div>
-        <div>Distance from {zombieDetail?.town?.name}: <div className='font-normal'>{zombieDetail?.zombieSightingDistance?.distance}</div></div>
-        <div>Type of Sighting: <div className='font-normal'>{zombieDetail?.zombieSightingType?.type}</div></div>
-        <div>Number of undead: <div className='font-normal'>{zombieDetail?.approxCount}</div> </div>
-       <div>Status: <div className='font-normal'>{zombieDetail?.zombieSightingStatus?.status}</div></div>
-       <div><button type="submit" className='button rounded-full bg-slate-200 w-36 pt-1, pb-1 m-3 px-4 py-1 text-sm text-purple-600 font-semibold rounded-none w-px justify-end text-justify border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2' id='delete_sighting' onClick={(event => deleteSighting(event, zombieDetail.id))}>X</button> <button type="submit" className='rounded-full bg-slate-200 w-36 pt-1, pb-1 m-3 px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2' onClick={() => navigate(`/zombies/${zombieDetail.id}/status`)}>Update Status</button></div>
-       </div>
-    </section>
+    return <div className='w-full flex justify-center mt-32'>
+    <section className='card mt-8 w-96'>
+        <div className='card-header flex'>
+            <div className='flex-none'>
+               { renderSightingIcons() }
+            </div>
+
+            <div className="flex-1"></div>
+
+            <div className="flex-none w-12 text-center"><button type="button" className='form-button small'  onClick={deleteSighting}>X</button></div>
+            </div>
+            <div>
+            <div className='card-body flex justify-evenly'>
+                <div className="flex-1 flex flex-col">
+                    <div className="trade-cell">
+                        <label>Posted By:</label>
+                        <span class="trade-data">{zombieDetail.name}</span>
+                    </div>
+                    <div className="trade-cell">
+                    <label>Distance From:</label>
+                        <span class="trade-data">{zombieDetail?.town?.name}</span>  
+                    </div>
+                    <div className="trade-cell">
+                    <label>Type of Sighting:</label>
+                        <span class="trade-data">{zombieDetail?.zombieSightingType?.type}</span>  
+                    </div>
+                    <div className="trade-cell">
+                    <label>Number of Undead:</label>
+                        <span class="trade-data">{zombieDetail?.approxCount}</span>  
+                    </div>
+                    <div className="trade-cell">
+                    <label>Status:</label>
+                        <span class="trade-data">{zombieDetail?.zombieSightingStatus?.status}</span>  
+                    </div>
+                    <div className="trade-cell"> 
+                      <button className="form-button small"  onClick={() => navigate(`/zombies/${zombieDetail.id}/status`)}>Update Status</button>
+                    </div>
+                </div>
+               
+               
+                   
+                    
+                   
+                    
+                      
+                    
+                    
+                
+            </div>
+            </div>
+            
+        </section>
+        </div>
+   
 }
+            
+     
+
+{/* <>
+        <section className="card mt-8">
+            <div className='card-header flex'>
+                <div className="flex-none w-12">
+                    <img className="card-icon" src={process.env.PUBLIC_URL + "/images/trade_icon.png"}></img>
+            </div>
+            <div className="flex-1"></div>
+            <div className="flex-none w-12 text-center"><button type="button" className='form-button small' onClick={(event) => clickDeleteTrade(event, tradeDetail.id) }>X</button></div>
+            </div>
+            <div className='card-body flex justify-evenly'>
+                <div className="flex-1 flex flex-col">
+                    <div className="trade-cell">
+                        <label>Supply Offered</label>
+                        <span class="trade-data">{tradeDetail.description}</span>
+                    </div>
+                    <div className="trade-cell">
+                    <label>Category</label>
+                        <span class="trade-data">{tradeDetail?.supplyTypeOffered?.type}</span>  
+                    </div>
+                    <div className="trade-cell">
+                    <label>Located At</label>
+                        <span class="trade-data">{tradeDetail?.town?.name}</span>  
+                    </div>
+                    <div className="trade-cell">
+                    <label>Offered By</label>
+                        <span class="trade-data">{tradeDetail?.enteredUser?.name}</span>  
+                    </div>
+                </div>
+                <div className='flex-1 flex flex-col '>
+                <div className="trade-cell">
+                        <label>Supply Wanted</label>
+                        <span class="trade-data">{tradeDetail.wanted}</span>
+                    </div>
+                    <div className="trade-cell">
+                    <label>Category</label>
+                        <span class="trade-data">{tradeDetail?.supplyTypeWanted?.type}</span>  
+                    </div>
+                    <div className="trade-cell">
+                    <label>Accepted By</label>
+                        <span class="trade-data">{tradeDetail?.acceptedUser?.name ? tradeDetail?.acceptedUser?.name : '--'}</span>  
+                    </div>
+                    <div className="trade-cell"> 
+                    {!tradeDetail.acceptedUser &&
+                        <button className="form-button small" onClick={(event) => clickAcceptButton(event, trade)}>Accept Trade</button>
+                    }
+                    </div>
+                </div>
+            </div>
+        </section>
+   </> */}

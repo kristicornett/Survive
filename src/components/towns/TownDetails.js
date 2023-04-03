@@ -48,27 +48,31 @@ export const TownDetails = () => {
    
 
     return <> <div className="flex">
-        <section className='townDetail flex-1/2 space-x-8'>
-            <div className='border-2 border-purple-800 p-4 m-4 w-full bg-slate-100 opacity-80 drop-shadow-sm rounded-md font-bold'>
+        <div className="card">
+            <div className="card-body">
             <div className='text-xl mb-2'>{townDetail.name}</div>
+            <div><span>{ townDetail.vacancy ? 'Homes Available!' : 'No Vacancies'}</span></div>
             <div>Population: {townDetail.population}</div>
-            <div className='inline'>Vacancy: <div className='font-normal inline'>{townDetail.vacancy ? 'true' : 'false'}</div></div>
             <div>Map: </div>
             <Map origin={townDetail.mapKey} width="450" height="320" mode='place'></Map>
+
+            </div>
         </div>
-        </section>
-        <section className="townDetail flex-1/2">
-            <div className='border-2 border-purple-800 p-4 m-4 w-full bg-slate-100 opacity-80 drop-shadow-sm rounded-md font-bold'>
-                <form id="directionsForm" onSubmit={clickShowDirections}>
-                    <input type="text" id="origin" placeholder='Enter your address' onChange={updateDestination}></input>
-                    <button className="button border border-purple" type='button' onClick={clickShowDirections}>Get Directions</button>
-                    <button className="button border border-purple" type='button' onClick={clearDestination}>Clear</button>
+        <div className="card">
+            <div className='card-body'>
+            <div className='font-bold text-center'>
+                <form className="map-search-form" onSubmit={clickShowDirections}>
+                    <input className='form-input text mr-4' type="text" id="origin" placeholder='Enter your address' onChange={updateDestination}></input>
+                    <button className="button form-button small" type='button' onClick={clickShowDirections}>Get Directions</button>
+                    <button className="button form-button small " type='button' onClick={clearDestination}>Clear</button>
                 </form>
                 {showDirectionsMap && 
-                    <Map origin={townDetail.mapKey} destination={targetDestination} width="450" height="320" mode='directions'></Map>
+                    <Map origin={targetDestination} destination={townDetail.mapKey} width="450" height="320" mode='directions'></Map>
                 }
             </div>
-        </section> 
+            </div>
+        </div>
+
     </div>
     </>
 }

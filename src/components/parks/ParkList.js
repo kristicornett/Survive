@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import { getTowns, deleteTown, getStates, getParkDescription } from '../../repos/ApiManager'
+import { getStates, getParkDescription } from '../../repos/ApiManager'
 import { useNavigate } from 'react-router-dom'
 import { getParks, getParksByState } from '../../repos/ParksRepo'
 import * as Modal from 'react-modal'
 import './Parks.css'
+import '../views/UserViews.css'
 
 export const ParkList = () => {
     const [parks, setParks] = useState([])
@@ -96,25 +97,29 @@ export const ParkList = () => {
     const renderViewTrainingsButton = (park) => {
 
         if(park.localDescription){ 
-            return <button className="button rounded-full bg-slate-200 w-36 pt-1, pb- m-3 px-4 py-1 text-sm 
-            text-purple-600 font-semibold rounded-none w-24 justify-end text-center border 
+            return <button className="button bg-slate-200 w-36 pt-1 px-4 py-1 text-sm 
+            text-purple-600 font-semibold rounded-none text-center border 
             border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent 
             focus:outline-none focus:ring-2 focus:ring-purple-600 text-center focus:ring-offset-2 
-            block" onClick={() => openModal(park.localDescription)}>View Trainings</button>
+            inline" onClick={() => openModal(park.localDescription)}>View Trainings</button>
         }
         else { return ''}
     }
     return (
       <>
-        <h1 className="title-text text-5xl text-green-700 text-center mt-8">
-          Parks
-        </h1>
+          <div className="home-bar parks">
+          
+            <span className="park-text">Park Trainings</span>
+          
+        </div>
+        
+      
         <article className="park_List flex flex-row flex-wrap basis-1/4">
           <div className="w-full">
             <section className="font-bold align-text-center w-full">
               <select
-                className="font-bold align-text-center mb-2 float-right mr-20 rounded-full bg-slate-200 
-                w-36 pt-1, pb-1 m-3 px-4 py-1 text-sm text-purple-600 font-semibold rounded-full 
+                className="font-bold align-text-center mb-2 float-right mr-20 bg-slate-200 
+                w-36 pt-1, pb-1 m-3 px-4 py-1 text-sm text-purple-600 font-semibold 
                 border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent 
                 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
                 required
@@ -127,18 +132,28 @@ export const ParkList = () => {
               </select>
             </section>
           </div>
+          
           <div className="flex content-center flex-row flex-wrap  basis-auto">
             {filteredParks.map((park) => {
               return (
                 <>
                   {" "}
                   <section className=" p-4 w-1/4" key={`park--${park.id}`}>
-                    <div className="town w-4/5 bg-slate-100 rounded-md drop-shadow-md w-48 place-content-evenly flex flex-col items-center justify-center">
+                   
+                    
+                    <div className="card bg-slate-100 rounded-md drop-shadow-md  flex flex-col items-center ">
+                    <div className='card-header'>
+                      <img className="card-icon" src={process.env.PUBLIC_URL + "/images/park_icon.png"}></img>
+                    </div>
+                    <div className="card-body">
                       {park.fullName}
-                      <div className="float-center">
+                      <div className='my-2'>
                         {renderViewTrainingsButton(park)}
+                        
+                        </div>
                       </div>
                     </div>
+                    
 
                     <div></div>
                   </section>
@@ -146,7 +161,9 @@ export const ParkList = () => {
               );
             })}
           </div>
+          
         </article>
+        
         <Modal
           onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}

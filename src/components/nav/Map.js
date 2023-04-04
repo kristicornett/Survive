@@ -1,6 +1,9 @@
+import config from '../../config.json'
+
+
 export const Map = ({origin, destination, width, height, mode}) => {
 
-    const apiKey = 'AIzaSyAtumI41jxAaR0yiTeCh49BQGEqB0h-094'
+    const apiKey = config.googleMapKey
     
 
     const buildQueryString = () => {

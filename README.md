@@ -1,6 +1,6 @@
 # Survive
 
-This project is my final Frontend Capstone. The purpose of this application is to help users survive the end of the world zombie apocalpyse. 
+This project is my final Frontend Capstone. The purpose of this application is to help users survive the end of the world zombie apocalpyse. It was created for levity but with the deadly fungus now in the United States perhaps it is 
 
 ## Description
 
@@ -15,8 +15,17 @@ See a list of user trades. Click on the details to see if the trade has been acc
 ### Towns Page
 See available towns. Whether or not there are vacancies. Click Homes Available or no vacacy to pull up a map to the town and get directions from your location. 
 
+## To enable Google Maps
+Add a config.json file to the src directory with the following body:
+```json
+{
+    "googleMapKey": "YOUR_MAP_API_KEY"
+}
+```
+
 ### Parks Page
 See a list of National Parks. Choose a state to see what available trainings are in your area.
+
 
 ## Most Proud
 
@@ -31,5 +40,5 @@ Here are a few things I could have added but ran out of time.
 4. Seeing whether or not trades have already been accepted with an icon or some other means.
 
 
-### This app uses react, tailwindcss, Google Maps, and the National Parks Services
+### This app uses react, tailwindcss, Google Maps, and the National Parks Services. JSON server using localhost:8088 
 

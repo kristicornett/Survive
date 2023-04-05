@@ -68,7 +68,7 @@ export const AddTown = (props) => {
               <div className="w-1/2 text-left">
                 <div className="form-cell">
                   <label className="form-label block">Town Name</label>
-                  <input id='name' type="text" className="form-input text block"o nChange={updateTown}></input>
+                  <input id='name' type="text" className="form-input text block" onChange={updateTown}></input>
                 </div>
                 <div className="form-cell">
                   <label className="form-label block">Map Key</label>
